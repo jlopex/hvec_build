@@ -12,5 +12,5 @@ fi
 tar xvzf $FILE && \
 cd $HOME/hvec_build/cmake-3.0.0 && \
 ./configure --prefix=$HOME/hvec_build/hvecdeps/usr && \
-make && make install
+make -j24 && make install
 

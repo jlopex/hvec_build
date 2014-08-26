@@ -6,14 +6,14 @@ if [ "$(uname -m)" = "x86_64" ]; then
   ARCHOPTS=""
 fi
 
-PATH=$PATH:/$HOME/vlc_build/vlcdeps/usr/bin
+PATH=$PATH:/$HOME/hvec_build/hvecdeps/usr/bin
 
-sudo apt-get install mercurial build-essential
+apt-get install mercurial build-essential
 
 echo "Installing x265"
-cd $HOME/vlc_build
+cd $HOME/hvec_build
 hg clone https://bitbucket.org/multicoreware/x265
 mkdir -p x265/out
 cd x265/out
-cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$HOME/vlc_build/vlcdeps/usr ../source/
-make -j2 && make install
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$HOME/hvec_build/hvecdeps/usr ../source/
+make -j24 && make install

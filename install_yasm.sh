@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FILE=yasm-1.2.0.tar.gz
+
 if [ "$(uname -m)" = "x86_64" ]; then
   ARCHOPTS="--enable-pic"
  else
@@ -7,10 +9,14 @@ if [ "$(uname -m)" = "x86_64" ]; then
 fi
 
 echo "Installing YASM"
-wget http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz && \
-tar xvzf yasm-1.2.0.tar.gz && \
-cd $HOME/vlc_build/yasm-1.2.0 && \
-./configure --prefix=$HOME/vlc_build/vlcdeps/usr \
+if [ ! -f $FILE ]; then
+    echo "File not found!"
+    wget http://www.tortall.net/projects/yasm/releases/$FILE
+fi
+
+tar xvzf $FILE && \
+cd $HOME/hvec_build/yasm-1.2.0 && \
+./configure --prefix=$HOME/hvec_build/hvecdeps/usr \
             $ARCHOPTS && \
-make && make install
+make -j24 && make install
 

@@ -6,17 +6,17 @@ if [ "$(uname -m)" = "x86_64" ]; then
   ARCHOPTS=""
 fi
 
-PATH=$PATH:/$HOME/vlc_build/vlcdeps/usr/bin
+PATH=$PATH:/$HOME/hvec_build/hvecdeps/usr/bin
 
 echo "Installing FDK_AAC"
 
-cd $HOME/vlc_build
+cd $HOME/hvec_build
 git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git
 cd fdk-aac
 autoreconf -fiv && \
-./configure --prefix=$HOME/vlc_build/vlcdeps/usr \
+./configure --prefix=$HOME/hvec_build/hvecdeps/usr \
             $ARCHOPTS \
             --disable-shared \
             --enable-static && \
-make && make install && make distclean
+make -j24 && make install && make distclean
 
