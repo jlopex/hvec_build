@@ -1,5 +1,7 @@
 #!/bin/bash
 
+NPROC=$(nproc)
+
 if [ "$(uname -m)" = "x86_64" ]; then
   ARCHOPTS="--enable-pic"
  else
@@ -16,4 +18,4 @@ cd x264
             --enable-static \
             --disable-cli \
             $ARCHOPTS && \
-make -j24 && make install
+make -j $NPROC && make install

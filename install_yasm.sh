@@ -1,6 +1,7 @@
 #!/bin/bash
 
 FILE=yasm-1.2.0.tar.gz
+NPROC=$(nproc)
 
 if [ "$(uname -m)" = "x86_64" ]; then
   ARCHOPTS="--enable-pic"
@@ -18,5 +19,5 @@ tar xvzf $FILE && \
 cd $HOME/hvec_build/yasm-1.2.0 && \
 ./configure --prefix=$HOME/hvec_build/hvecdeps/usr \
             $ARCHOPTS && \
-make -j24 && make install
+make -j $NPROC && make install
 

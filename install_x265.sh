@@ -1,5 +1,7 @@
 #!/bin/bash
 
+NPROC=$(nproc)
+
 if [ "$(uname -m)" = "x86_64" ]; then
   ARCHOPTS="--enable-pic"
  else
@@ -16,4 +18,4 @@ hg clone https://bitbucket.org/multicoreware/x265
 mkdir -p x265/out
 cd x265/out
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX:PATH=$HOME/hvec_build/hvecdeps/usr ../source/
-make -j24 && make install
+make -j $NPROC && make install

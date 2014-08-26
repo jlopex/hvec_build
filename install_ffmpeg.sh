@@ -1,4 +1,7 @@
 #!/bin/bash
+
+NPROC=$(nproc)
+
 echo "Installing FFMPEG"
 apt-get -y install libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev zlib1g-dev
 cd $HOME/hvec_build
@@ -32,4 +35,4 @@ PKG_CONFIG_PATH="$HOME/hvec_build/hvecdeps/usr/lib/pkgconfig" \
 ##            --disable-devices \
 ##            --disable-avfilter \
 ##            --disable-avresample && \
-make -j 24 && make install && make distclean
+make -j $NPROC && make install && make distclean

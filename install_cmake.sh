@@ -1,6 +1,7 @@
 #!/bin/bash
 
 FILE=cmake-3.0.0.tar.gz
+NPROC=$(nproc)
 
 echo "Installing CMAKE"
 
@@ -12,5 +13,5 @@ fi
 tar xvzf $FILE && \
 cd $HOME/hvec_build/cmake-3.0.0 && \
 ./configure --prefix=$HOME/hvec_build/hvecdeps/usr && \
-make -j24 && make install
+make -j $NPROC && make install
 

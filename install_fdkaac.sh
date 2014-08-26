@@ -1,5 +1,7 @@
 #!/bin/bash
 
+NPROC=$(nproc)
+
 if [ "$(uname -m)" = "x86_64" ]; then
   ARCHOPTS="--enable-pic"
  else
@@ -18,5 +20,5 @@ autoreconf -fiv && \
             $ARCHOPTS \
             --disable-shared \
             --enable-static && \
-make -j24 && make install && make distclean
+make -j $NPROC && make install && make distclean
 
