@@ -3,8 +3,8 @@
 NPROC=$(nproc)
 
 echo "Installing FFMPEG"
-apt-get -y install libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev zlib1g-dev
-cd $HOME/hvec_build
+sudo apt-get -y install libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev zlib1g-dev pkg-config
+cd $HOME/vlc_build
 git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg 
 export PATH=$PATH:/$HOME/hvec_build/hvecdeps/usr/bin
 cd ffmpeg && \
