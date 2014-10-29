@@ -9,6 +9,7 @@ if [ "$(uname -m)" = "x86_64" ]; then
 fi
 
 PATH=$PATH:/$HOME/hvec_build/hvecdeps/usr/bin
+sudo apt-get -y install autoconf libtool 
 
 echo "Installing FDK_AAC"
 
