@@ -4,8 +4,8 @@ NPROC=$(nproc)
 
 echo "Installing FFMPEG"
 sudo apt-get -y install libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev zlib1g-dev pkg-config libfreetype6-dev
-cd $HOME/vlc_build
-git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg 
+cd $HOME/hvec_build
+#git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg 
 export PATH=$PATH:/$HOME/hvec_build/hvecdeps/usr/bin
 cd ffmpeg && \
 if [ "$(uname -m)" = "x86_64" ]; then
@@ -22,6 +22,7 @@ PKG_CONFIG_PATH="$HOME/hvec_build/hvecdeps/usr/lib/pkgconfig" \
             --extra-libs="-ldl" \
             --enable-gpl \
             --enable-version3 \
+            --enable-libfreetype \
             --enable-nonfree \
             --enable-libmp3lame \
             --enable-libopencore-amrnb \
